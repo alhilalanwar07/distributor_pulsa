@@ -403,8 +403,4 @@
     <!-- Page level custom scripts -->
     <script src="{{ url('/') }}/js/demo/chart-area-demo.js"></script>
     <script src="{{ url('/') }}/js/demo/chart-pie-demo.js"></script>
-
-    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
-    <x-livewire-alert::flash />
-
 </body>
