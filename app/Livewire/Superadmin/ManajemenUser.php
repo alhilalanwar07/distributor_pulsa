@@ -5,11 +5,9 @@ namespace App\Livewire\Superadmin;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ManajemenUser extends Component
 {
-    use LivewireAlert;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
@@ -34,18 +32,6 @@ class ManajemenUser extends Component
                 ->orWhere('email', 'like', '%'.$this->search.'%')
                 ->paginate($this->perPage),
         ]);
-    }
-    // test alert
-    public function alert()
-    {
-        $this->alert('success', 'Hello!', [
-            'position' => 'center',
-            'timer' => 3000,
-            'toast' => true,
-           ]);
-           $this->js("alert('Post saved!')");
-           // Display an error toast with no title
-            toastr()->error('Oops! Something went wrong!');
     }
 
     public function store()

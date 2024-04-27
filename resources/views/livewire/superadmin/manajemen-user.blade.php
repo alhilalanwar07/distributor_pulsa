@@ -98,11 +98,6 @@
                     <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahUser">
                         <i class="fas fa-plus"></i>
                         Tambah User</button>
-                    {{-- test alert  --}}
-                    <button class="btn btn-primary btn-sm" wire:click="alert">
-                        <i class="fas fa-plus"></i>
-                        Alert
-                    </button>
                 </div>
                 <div class="card-body">
                     {{-- perpage, search --}}
