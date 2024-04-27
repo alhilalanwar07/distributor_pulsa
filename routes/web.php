@@ -1,6 +1,9 @@
 <?php
 
+use App\Livewire\Superadmin\Home;
+use App\Livewire\Superadmin\ManajemenUser;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // login, register
+
+// route livewire
+Route::get('/superadmin/manajemen-user', ManajemenUser::class)->name('superadmin.manajemen-user');
+Route::get('/superadmin/home', Home::class)->name('superadmin.home');

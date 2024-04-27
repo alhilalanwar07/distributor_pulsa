@@ -7,12 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ url('/') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -20,6 +19,7 @@
 
     {{-- logo --}}
     <link rel="icon" href="{{ url('/') }}/img/logo_ptlumbung.png" type="image/png">
+    @livewireStyles
 
 </head>
 <body id="page-top">
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/superadmin/home" wire:navigate>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -125,9 +125,9 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                <a class="nav-link" href="/superadmin/manajemen-user" wire:navigate>
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Manajemen User</span></a>
             </li>
 
             <!-- Divider -->
@@ -305,7 +305,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="{{ url('/') }}/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -340,12 +340,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-
-                    @yield('content')
-
-
-
+                    {{ $slot }}
                 </div>
                 <!-- /.container-fluid -->
 
@@ -408,5 +403,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ url('/') }}/js/demo/chart-area-demo.js"></script>
     <script src="{{ url('/') }}/js/demo/chart-pie-demo.js"></script>
+
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <x-livewire-alert::flash />
 
 </body>
