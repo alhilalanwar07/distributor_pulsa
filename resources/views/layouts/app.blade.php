@@ -17,6 +17,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ url('/') }}/css/sb-admin-2.min.css" rel="stylesheet">
+
+    {{-- logo --}}
+    <link rel="icon" href="{{ url('/') }}/img/logo_ptlumbung.png" type="image/png">
+    
 </head>
 <body id="page-top">
 
