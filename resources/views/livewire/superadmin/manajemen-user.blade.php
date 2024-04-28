@@ -128,6 +128,12 @@
                                 @enderror
                             </div>
                         </div>
+                        {{-- button test alert --}}
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" wire:click.prevent="submit">
+                                Test Alert
+                            </button>
+                        </div>
                     </div>
                     {{-- end perpage, search --}}
                     <div class="table-responsive">

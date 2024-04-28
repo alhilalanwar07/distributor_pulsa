@@ -5,11 +5,14 @@ namespace App\Livewire\Superadmin;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ManajemenUser extends Component
 {
+    use LivewireAlert;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+
 
     public $search;
     public $perPage = 10;
@@ -49,5 +52,11 @@ class ManajemenUser extends Component
         ]);
 
         $this->resetInput();
+    }
+
+    // test alert
+    public function submit()
+    {
+        $this->alert('question', 'How are you today?');
     }
 }
