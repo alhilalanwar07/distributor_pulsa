@@ -21,6 +21,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ url('/') }}/css/sb-admin-2.min.css" rel="stylesheet">
+    {{-- icon --}}
+    <link rel="icon" href="{{ url('/') }}/img/logo_ptlumbung.png" type="image/x-icon">
+
+    @livewireStyles
 
 </head>
 

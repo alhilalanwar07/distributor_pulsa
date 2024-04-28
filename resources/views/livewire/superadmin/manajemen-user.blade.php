@@ -106,7 +106,7 @@
                             <div class="form-group
                             @error('perPage') has-error @enderror">
                                 {{-- <label for="perPage">Per Page</label> --}}
-                                <select wire:model="perPage" class="form-control">
+                                <select wire:model.live="perPage" class="form-control">
                                     <option>5</option>
                                     <option>10</option>
                                     <option>15</option>
@@ -121,7 +121,7 @@
                         <div class="col-md-10">
                             <div class="form-group @error('search') has-error @enderror">
                                 {{-- <label for="search">Search</label> --}}
-                                <input wire:model="search" type="text" class="form-control" placeholder="Search...">
+                                <input wire:model.live="search" type="text" class="form-control" placeholder="Search...">
                                 @error('search')
                                 <span class="help-block
                                     text-danger">{{ $message }}</span>

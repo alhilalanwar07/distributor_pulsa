@@ -26,7 +26,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    // reedirect ke superadmin/home
+    protected $redirectTo = RouteServiceProvider::SUPERADMIN_HOME;
 
     /**
      * Create a new controller instance.

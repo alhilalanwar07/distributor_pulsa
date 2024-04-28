@@ -14,7 +14,10 @@ class ManajemenUser extends Component
     public $search;
     public $perPage = 10;
 
-    public $role, $name, $email, $password;
+    public $role;
+    public $name;
+    public $email;
+    public $password;
 
     protected $rules = [
         'role' => 'required',
@@ -27,7 +30,7 @@ class ManajemenUser extends Component
 
     public function render()
     {
-        return view('livewire.superadmin.manajemen-user',[
+        return view('livewire.superadmin.manajemen-user', [
             'users' => User::where('name', 'like', '%'.$this->search.'%')
                 ->orWhere('email', 'like', '%'.$this->search.'%')
                 ->paginate($this->perPage),
