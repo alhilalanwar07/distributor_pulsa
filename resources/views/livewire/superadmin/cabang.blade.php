@@ -19,44 +19,6 @@
                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary">Cabang</h6>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#modalTambah"><i class="fas fa-plus fa-sm text-white-70"></i> Tambah Cabang</a>
-
-                    <!-- Modal -->
-                    <div wire:ignore.self class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalTambahLabel">Tambah Cabang</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- Add your form fields here -->
-                                    <form wire:submit.prevent="store">
-                                        @csrf
-                                        <div class="form-group @error('kode_cabang') has-error @enderror">
-                                            <label for="kode_cabang">Kode Cabang</label>
-                                            <input type="text" wire:model="kode_cabang" class="form-control" id="kode_cabang" placeholder="Kode Cabang">
-                                            @error('kode_cabang')
-                                            <span class="help-block text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group @error('nama_cabang') has-error @enderror">
-                                            <label for="nama_cabang">Nama Cabang</label>
-                                            <input type="text" wire:model="nama_cabang" class="form-control" id="nama_cabang" placeholder="Nama Cabang">
-                                            @error('nama_cabang')
-                                            <span class="help-block text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                            <button type="submit" class="btn btn-primary">Simpan</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="card-body">
                     {{-- perpage, search --}}
@@ -92,10 +54,11 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr class="text-center">
+                                <tr class="text-center pointer">
                                     <th wire:click="sortBy('id')" width="5%">ID</th>
                                     <th wire:click="sortBy('kode_cabang')">Kode</th>
                                     <th wire:click="sortBy('nama_cabang')">Nama</th>
+                                    <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,6 +67,10 @@
                                     <td>{{ $cabang->id }}</td>
                                     <td>{{ $cabang->kode_cabang }}</td>
                                     <td>{{ $cabang->nama_cabang }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-info" wire:click="edit({{ $cabang->id }})" data-toggle="modal" data-target="#modalUpdate"><i class="fas fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" wire:click="delete({{ $cabang->id }})"><i class="fas fa-trash"></i></button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -122,6 +89,79 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahLabel">Tambah Cabang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your form fields here -->
+                    <form wire:submit.prevent="store">
+                        @csrf
+                        <div class="form-group @error('kode_cabang') has-error @enderror">
+                            <label for="kode_cabang">Kode Cabang</label>
+                            <input type="text" wire:model="kode_cabang" class="form-control" id="kode_cabang" placeholder="Kode Cabang">
+                            @error('kode_cabang')
+                            <span class="help-block text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group @error('nama_cabang') has-error @enderror">
+                            <label for="nama_cabang">Nama Cabang</label>
+                            <input type="text" wire:model="nama_cabang" class="form-control" id="nama_cabang" placeholder="Nama Cabang">
+                            @error('nama_cabang')
+                            <span class="help-block text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div wire:ignore.self class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdateLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUpdateLabel">Update Cabang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your form fields here -->
+                    <form wire:submit.prevent="update">
+                        @csrf
+                        <div class="form-group @error('kode_cabang') has-error @enderror">
+                            <label for="kode_cabang">Kode Cabang</label>
+                            <input type="text" wire:model="kode_cabang" class="form-control" id="kode_cabang" placeholder="Kode Cabang">
+                            @error('kode_cabang')
+                            <span class="help-block text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group @error('nama_cabang') has-error @enderror">
+                            <label for="nama_cabang">Nama Cabang</label>
+                            <input type="text" wire:model="nama_cabang" class="form-control" id="nama_cabang" placeholder="Nama Cabang">
+                            @error('nama_cabang')
+                            <span class="help-block text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -19,6 +19,7 @@
 
     {{-- logo --}}
     <link rel="icon" href="{{ url('/') }}/img/logo_ptlumbung.png" type="image/png">
+
     @livewireStyles
 
 </head>
@@ -350,7 +351,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -369,8 +370,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ url('/') }}/js/demo/chart-area-demo.js"></script>
     <script src="{{ url('/') }}/js/demo/chart-pie-demo.js"></script>
+
     @livewireScripts
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <x-livewire-alert::scripts />
 </body>
