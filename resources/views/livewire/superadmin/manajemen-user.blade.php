@@ -128,16 +128,10 @@
                                 @enderror
                             </div>
                         </div>
-                        {{-- button test alert --}}
-                        <div class="col-md-12">
-                            <button class="btn btn-primary" wire:click.prevent="submit">
-                                Test Alert
-                            </button>
-                        </div>
                     </div>
                     {{-- end perpage, search --}}
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr class="text-center">
                                     <th width="5%">No</th>
@@ -147,6 +141,15 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                                <tr class="text-center">
+                                    <th width="5%">No</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </tfoot>
                             <tbody>
                                 @forelse ($users as $user)
                                 <tr>
@@ -154,7 +157,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">
-                                        <span class="badge badge-{{ $user->role == 'superadmin' ? 'danger' : 'primary' }}">
+                                        <span class="badge badge-{{ $user->role == 'superadmin' ? 'danger' : ($user->role == 'admin' ? 'primary' : 'success') }}">
                                             {{ ucfirst($user->role) }}
                                         </span>
                                     <td>
@@ -167,8 +170,8 @@
                                     </td>
                                 </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="5">Tidak ada data</td>
+                                <tr class="text-center">
+                                    <td colspan="5">Tidak ada data.</td>
                                 </tr>
                                 @endforelse
                             </tbody>
