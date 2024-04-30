@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('outlets', function (Blueprint $table) {
             $table->id();
             $table->string('kode_outlet')->unique();
-            $table->text('foto_outlet');
+            $table->text('foto_outlet')->nullable();
             $table->string('nama_outlet');
             $table->string('nama_pemilik');
             $table->string('telepon_pemilik');

@@ -1,7 +1,7 @@
 <div>
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-gray-800">Cabang</h1>
+    <div class="d-sm-flex align-items-center justify-content-end mb-2">
+        {{-- <h1 class="h3 mb-0 text-gray-800">Cabang</h1> --}}
         {{-- breadcrumb --}}
         <nav aria-label="breadcrumb" class="align-items-center">
             <ol class="breadcrumb">
@@ -58,7 +58,7 @@
                                     <th wire:click="sortBy('id')" width="5%">ID</th>
                                     <th wire:click="sortBy('kode_cabang')">Kode</th>
                                     <th wire:click="sortBy('nama_cabang')">Nama</th>
-                                    <th>AKSI</th>
+                                    <th width="10%">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>

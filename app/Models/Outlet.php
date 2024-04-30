@@ -15,6 +15,7 @@ class Outlet extends Model
         'nama_pemilik',
         'alamat_outlet',
         'telepon_pemilik',
+        'foto_outlet',
 
         'cabang_id'
     ];
