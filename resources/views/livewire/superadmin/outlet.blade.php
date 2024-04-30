@@ -63,6 +63,7 @@
                                 <tr class="text-center pointer">
                                     <th wire:click="sortBy('id')" width="5%">ID</th>
                                     <th wire:click="sortBy('kode_outlet')">Kode</th>
+                                    <th wire:click="sortBy('cabang_id')">Cabang</th>
                                     <th wire:click="sortBy('nama_outlet')">Nama Outlet</th>
                                     <th wire:click="sortBy('nama_pemilik')">Pemilik / Telp.</th>
                                     <th wire:click="sortBy('alamat_outlet')">Alamat Outlet</th>
@@ -74,6 +75,7 @@
                                 <tr class="text-center">
                                     <td>{{ $outlet->id }}</td>
                                     <td>{{ $outlet->kode_outlet }}</td>
+                                    <td>{{ $outlet->cabang->nama_cabang }}</td>
                                     <td>{{ $outlet->nama_outlet }}</td>
                                     <td>{{ $outlet->nama_pemilik }} / 0{{ $outlet->telepon_pemilik }}</td>
                                     <td>{{ $outlet->alamat_outlet }}</td>
