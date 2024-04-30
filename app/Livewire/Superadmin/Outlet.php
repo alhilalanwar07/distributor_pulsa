@@ -7,7 +7,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\Outlet as ModelsOutlet;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 
